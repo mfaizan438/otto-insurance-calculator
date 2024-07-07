@@ -1,0 +1,12 @@
+# @format
+
+version: "3" 
+services:
+  99dpf-backend:
+    image: node:14.16.0
+    volumes:
+      - .:/usr/src
+    working_dir: /usr/src
+    command: npm run start
+    ports:
+      - "3001:4000"

@@ -1,0 +1,17 @@
+# @format
+
+version: "2"
+services:
+  base:
+    image: node:14.16.0
+    volumes:
+      - .:/usr/src/
+    working_dir: /usr/src/
+  install:
+    extends:
+      service: base
+    command: npm i
+  build:
+    extends:
+      service: base
+    command: npm run build
