@@ -8,20 +8,35 @@ const env = process.env.NODE_ENV;
 
 const config = configJson[env];
 
+let sequelize;
 const db = {};
-let sequelize = new Sequelize(config.database, config.username, config.password, {
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
-  dialect: 'mysql',
-  logging: false,
-  pool: {
-    max: 20,
-    min: 0,
-    acquire: 60000,
-    idle: 10000,
-    evict: 60000
-  }
-});
+if (process.env.DATABASE_URL) {
+  sequelize = new Sequelize(process.env.DATABASE_URL, {
+    dialect: 'mysql',
+    logging: false,
+    pool: {
+      max: 20,
+      min: 0,
+      acquire: 60000,
+      idle: 10000,
+      evict: 60000
+    }
+  });
+} else {
+  sequelize = new Sequelize(config.database, config.username, config.password, {
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    dialect: 'mysql',
+    logging: false,
+    pool: {
+      max: 20,
+      min: 0,
+      acquire: 60000,
+      idle: 10000,
+      evict: 60000
+    }
+  });
+}
 
 
 fs.readdirSync(__dirname)
