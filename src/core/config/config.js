@@ -1,5 +1,12 @@
+// Load environment variables from .env file
 require('dotenv').config();
 
+/**
+ * Configuration object for the application's development environment.
+ * Utilizes environment variables for database connection settings.
+ *
+ * @type {Object}
+ */
 module.exports = {
   development: {
     database: process.env.DB_NAME,

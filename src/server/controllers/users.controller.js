@@ -11,7 +11,7 @@ class UserController {
   }
 
   /**
-   * 
+   *
    * @param {*} req Request
    * @param {*} res Response
    * @description Create a new user
@@ -27,7 +27,7 @@ class UserController {
   }
 
   /**
- * 
+ *
  * @param {*} req Request
  * @param {*} res Response
  * @description Submit user ID and desired start date, get user data, and send a POST request to a third-party URL
@@ -66,5 +66,4 @@ class UserController {
     }
   }
 }
-
 export default UserController;

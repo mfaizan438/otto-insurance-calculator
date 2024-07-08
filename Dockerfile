@@ -1,4 +1,3 @@
-# Use an official Node.js runtime as the base image
 FROM node:18
 
 # Set the working directory in the container to /app
@@ -12,9 +11,6 @@ RUN npm install
 
 # Copy the rest of the application code to the working directory
 COPY . .
-
-# Copy the .env file into the image
-COPY .env ./
 
 # Build the application for production
 RUN npm run build

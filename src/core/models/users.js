@@ -1,10 +1,20 @@
-
 const { Model } = require('sequelize');
 
+/**
+ * Defines the User model with fields and validations.
+ *
+ * @param {object} sequelize - The Sequelize instance.
+ * @param {object} DataTypes - The data types for model properties.
+ * @returns {class} The User model class.
+ */
 module.exports = (sequelize, DataTypes) => {
 
+  /**
+   * User model class extending Sequelize Model.
+   */
   class User extends Model { }
 
+  // Initialize model with schema definition.
   User.init({
     id: {
       type: DataTypes.INTEGER,
@@ -24,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       unique: true,
       validate: {
-        isEmail: true,
+        isEmail: true, // Validates the email format.
       },
     },
     phone: {
@@ -34,7 +44,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'users',
-    timestamps: true, // createdAt and updatedAt fields are managed automatically
+    timestamps: true, // Enables automatic creation of createdAt and updatedAt fields.
   });
   return User;
 };

@@ -1,6 +1,11 @@
 const winston = require("winston");
 require('winston-daily-rotate-file');
 const WinstonCloudWatch = require('winston-cloudwatch');
+
+/**
+ * Configures and exports a Winston logger with JSON formatting and console transport.
+ * The logger is also configured to support daily log rotation and CloudWatch integration.
+ */
 export const logger = new winston.createLogger({
   format: winston.format.json(),
   transports: [
@@ -12,6 +17,10 @@ export const logger = new winston.createLogger({
   ],
 });
 
+/**
+ * Configuration for Winston CloudWatch transport.
+ * Includes AWS credentials, log group and stream names, and a custom message formatter.
+ */
 const cloudwatchConfig = {
   logGroupName: process.env.CLOUDWATCH_GROUP_NAME,
   logStreamName: process.env.CLOUDWATCH_STREAM_NAME,
@@ -24,6 +33,10 @@ const cloudwatchConfig = {
   }
 }
 
+/**
+ * Middleware function for logging request and response details.
+ * Masks sensitive information in request body and limits response body size for CloudWatch.
+ */
 export const loggerMiddleWare = (req, res, next) => {
 
   const now = Date.now();
@@ -62,6 +75,5 @@ export const loggerMiddleWare = (req, res, next) => {
   next();
 
 }
+// Adds the CloudWatch transport to the logger with the specified configuration.
 logger.add(new WinstonCloudWatch(cloudwatchConfig))
-
-
