@@ -65,3 +65,6 @@ Validations are implemented on the user creation endpoint using express-validato
 2. Call the submit request  http://localhost:3000/api/v1/submit. Here I am calling the external api request but as I already told this endpoint is not working so, we are returning the error response from it.
 
 ![alt text](image.png)
+
+3. Docker running logs 
+![alt text](image-2.png)

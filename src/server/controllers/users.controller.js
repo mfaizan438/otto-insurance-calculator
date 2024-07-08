@@ -1,4 +1,3 @@
-import Service from "../services/default.service";
 import { API_RESPONSES } from "../utils/constants";
 const axios = require('axios');
 import UserService from "../services/user.service";

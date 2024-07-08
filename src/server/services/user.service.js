@@ -1,4 +1,3 @@
-import Model from '../models/index';
 import { encrypt, decrypt } from '../utils/crypto';
 class UserService {
   constructor(users) {
