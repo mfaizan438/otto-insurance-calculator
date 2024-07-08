@@ -41,7 +41,6 @@ Thumbs.db
 *.app
 *.exe
 *.war
-.env
 .env backup
 
 # Large media files
