@@ -77,6 +77,78 @@
           }
         }
       }
+    },
+    "/submit": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Submit user ID and desired start date",
+        "description": "This endpoint allows you to submit a user ID and a desired start date. It retrieves the user data and sends a POST request to a third-party URL.",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "User ID and desired start date",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user_id": {
+                  "type": "integer"
+                },
+                "desired_start_date": {
+                  "type": "string",
+                  "format": "date"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "EffectDate": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "Client": {
+                  "type": "object",
+                  "properties": {
+                    "Email": {
+                      "type": "string"
+                    },
+                    "Phone": {
+                      "type": "string"
+                    },
+                    "FirstName": {
+                      "type": "string"
+                    },
+                    "LastName": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "User not found"
+          }
+        }
+      }
     }
   },
   "definitions": {

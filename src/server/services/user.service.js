@@ -19,7 +19,7 @@ class UserService extends Model {
   }
 
   async findUserById(id) {
-    const user = await this.users.findById(id);
+    const user = await this.users.findOne({ where: { id } });
 
     // Decrypt the phone_number field
     if (user && user.phone) {

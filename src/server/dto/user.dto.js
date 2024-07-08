@@ -23,7 +23,7 @@ const createUserSchema = checkSchema({
         in: ['body'],
         isEmail: true,
         notEmpty: true,
-        errorMessage: 'Valid email is required.',
+        errorMessage: 'Valid email is required. e.g. john.doe@example.com',
     },
     phone: {
         in: ['body'],
@@ -33,36 +33,26 @@ const createUserSchema = checkSchema({
     },
 });
 
-const updateUserSchema = checkSchema({
-    first_name: {
+const checkStartDateSchema = checkSchema({
+    user_id: {
         in: ['body'],
-        optional: true,
-        isString: true,
-        isLength: {
-            options: { max: 30 },
-        },
-    },
-    last_name: {
-        in: ['body'],
-        optional: true,
-        isString: true,
-        isLength: {
-            options: { max: 30 },
-        },
-    },
-    email: {
-        in: ['body'],
-        optional: true,
-        isEmail: true,
-    },
-    phone: {
-        in: ['body'],
-        optional: true,
         isInt: true,
+        notEmpty: true,
+        errorMessage: 'User ID is required and should be an integer.',
+    },
+    desired_start_date: {
+        in: ['body'],
+        custom: {
+            options: (value, { req }) => {
+                return /^(\d{4})-(\d{2})-(\d{2})$/.test(value);
+            }
+        },
+        notEmpty: true,
+        errorMessage: 'Desired start date is required and should be a valid date. e.g. 2024-07-10',
     },
 });
 
 module.exports = {
     createUserSchema,
-    updateUserSchema,
+    checkStartDateSchema
 };
