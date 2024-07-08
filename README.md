@@ -23,6 +23,7 @@ Ensure you have the following installed on your system:
 npm install
 
 ## Run the project:
+npm run db:migrate
 npm run dev
 
 The application will be running at `http://localhost:3000`
@@ -45,6 +46,9 @@ The key for encryption and decryption of phone numbers is stored in the .env fil
 ## Swagger Documentation
 # API Documentation:
 Access the Swagger documentation for this project at http://localhost:3000/api-docs/.
+1. Create user endpoint:  http://localhost:3000/api-docs/#/user/post_users
+2. Submit user: http://localhost:3000/api-docs/#/user/post_submit
+
 # Database
 MySQL Database:
 This project uses MySQL as the database, managed through Sequelize ORM. Ensure the database connection details are correctly set in the .env file.
