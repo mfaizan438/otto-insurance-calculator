@@ -3,6 +3,8 @@
 ## Overview
 This project is an Express.js application that utilizes MySQL with Sequelize ORM for database interactions. It includes features such as encryption/decryption of phone numbers (**_For assignment purpose I assume phone field is sensitive and we need to encrypt it before saving to database_**), validation on user creation, and Swagger documentation for API endpoints.
 
+**Note:** Please note that while the .env file has been committed to the repository for this instance, it will not be included in version control during the development process.
+
 ### Project Containerization:
 The project has been containerized to ensure a consistent development and production environment. The Docker Compose setup includes a service for the Node.js application and a MySQL database.
 
