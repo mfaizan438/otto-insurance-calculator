@@ -38,6 +38,7 @@ docker-compose up -d --build
 The project has been containerized to ensure a consistent development and production environment. The Docker Compose setup includes a service for the Node.js application and a MySQL database.
 
 ## Running Test Cases
+Unit tests for both the controllers and services have been developed to ensure all components are functioning as expected.
 npm run test
 
 ## Encryption and Decryption
