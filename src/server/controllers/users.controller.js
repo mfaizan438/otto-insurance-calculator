@@ -1,12 +1,14 @@
 import Service from "../services/default.service";
 import { API_RESPONSES } from "../utils/constants";
 const axios = require('axios');
+import UserService from "../services/user.service";
 
-class UserController extends Service {
-  constructor() {
-    super();
-    this.userService = super.userService();
+class UserController {
 
+  // create a private data member service named userService
+
+  constructor(userService) {
+    this.userService = userService;
   }
 
   /**
@@ -18,8 +20,7 @@ class UserController extends Service {
    */
   async create(req, res) {
     try {
-      const userService = super.userService();
-      const user = await userService.create(req.body);
+      const user = await this.userService.create(req.body);
       return res.status(201).json(user);
     } catch (err) {
       return res.status(400).json({ error: err.message });
@@ -42,8 +43,7 @@ class UserController extends Service {
 
     try {
       const { user_id, desired_start_date } = req.body;
-      const userService = super.userService();
-      const user = await userService.findUserById(user_id);
+      const user = await this.userService.findUserById(user_id);
 
       if (!user) {
         return res.status(404).json({ error: API_RESPONSES.USER_NOT_FOUND });

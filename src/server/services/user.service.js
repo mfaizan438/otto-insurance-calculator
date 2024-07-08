@@ -1,9 +1,8 @@
 import Model from '../models/index';
 import { encrypt, decrypt } from '../utils/crypto';
-class UserService extends Model {
-  constructor() {
-    super();
-    this.users = super.users();
+class UserService {
+  constructor(users) {
+    this.users = users;
   }
   async create(user) {
     const existingUser = await this.users.findOne({ where: { email: user.email } });
